@@ -541,511 +541,361 @@ const PROGRAM = [
   { phase: 1, name: "Foundation", week: 3, day: 18, rest: true },
   { phase: 1, name: "Foundation", week: 3, day: 19, rest: false, exercises: [
     { name: "Archer Push-ups", sets: "3×6 each", icon: "💪" },
-    { nam    z-index: 100;
-    background: rgba(10,10,15,0.92);
-    backdrop-filter: blur(12px);
-    padding: 14px 20px 10px;
-    border-bottom: 1px solid var(--border);
-  }
-  .header-top { display: flex; justify-content: space-between; align-items: center; }
-  .logo { font-family: 'Bebas Neue'; font-size: 28px; letter-spacing: 2px; color: var(--accent); line-height: 1; }
-  .logo span { color: var(--accent2); }
-  .day-badge {
-    background: var(--accent);
-    color: #0a0a0f;
-    font-weight: 700;
-    font-size: 12px;
-    padding: 4px 10px;
-    border-radius: 20px;
-    letter-spacing: .5px;
-  }
-  .phase-label { font-size: 11px; color: var(--subtext); margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
-
-  /* NAV */
-  .nav {
-    display: flex;
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-btn {
-    flex: 1;
-    padding: 11px 6px;
-    background: none;
-    border: none;
-    color: var(--muted);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: .8px;
-    text-transform: uppercase;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    transition: all .2s;
-  }
-  .nav-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
-
-  /* PAGES */
-  .page { display: none; padding: 20px 16px 100px; }
-  .page.active { display: block; }
-
-  /* PROGRESS BAR */
-  .progress-wrap { margin-bottom: 20px; }
-  .progress-meta { display: flex; justify-content: space-between; margin-bottom: 6px; font-size: 12px; color: var(--subtext); }
-  .progress-bar { height: 6px; background: var(--border); border-radius: 999px; overflow: hidden; }
-  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent2), var(--accent)); border-radius: 999px; transition: width .6s ease; }
-
-  /* STREAK STRIP */
-  .streak-strip {
-    display: flex; gap: 8px; align-items: center;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 14px 16px;
-    margin-bottom: 16px;
-  }
-  .streak-fire { font-size: 28px; }
-  .streak-info { flex: 1; }
-  .streak-num { font-family: 'Bebas Neue'; font-size: 36px; color: var(--accent2); line-height: 1; }
-  .streak-label { font-size: 11px; color: var(--subtext); text-transform: uppercase; letter-spacing: 1px; }
-  .best-streak { text-align: right; }
-  .best-num { font-family: 'Bebas Neue'; font-size: 22px; color: var(--muted); }
-  .best-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: .8px; }
-
-  /* PHASE CARDS */
-  .phase-card {
-    border-radius: 14px;
-    overflow: hidden;
-    margin-bottom: 14px;
-    border: 1px solid var(--border);
-    cursor: pointer;
-    transition: transform .15s, border-color .2s;
-    active: none;
-  }
-  .phase-card:active { transform: scale(.98); }
-  .phase-card.unlocked { border-color: var(--border); }
-  .phase-card.current { border-color: var(--accent); }
-  .phase-card.done { border-color: #2a3a1a; }
-
-  .phase-header {
-    display: flex; align-items: center; gap: 12px;
-    padding: 14px 16px;
-    background: var(--card);
-  }
-  .phase-num {
-    font-family: 'Bebas Neue';
-    font-size: 42px;
-    line-height: 1;
-    color: var(--muted);
-    min-width: 36px;
-  }
-  .phase-card.current .phase-num { color: var(--accent); }
-  .phase-card.done .phase-num { color: #4a7a22; }
-  .phase-info { flex: 1; }
-  .phase-name { font-weight: 700; font-size: 15px; }
-  .phase-weeks { font-size: 12px; color: var(--subtext); margin-top: 2px; }
-  .phase-badge {
-    font-size: 10px;
-    font-weight: 700;
-    padding: 3px 8px;
-    border-radius: 20px;
-    text-transform: uppercase;
-    letter-spacing: .5px;
-  }
-  .badge-current { background: rgba(200,255,0,.15); color: var(--accent); }
-  .badge-done { background: rgba(74,122,34,.2); color: #7dcc40; }
-  .badge-locked { background: var(--border); color: var(--muted); }
-
-  .phase-body {
-    background: var(--surface);
-    padding: 0 16px;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height .35s ease, padding .35s;
-  }
-  .phase-body.open { max-height: 1000px; padding: 14px 16px; }
-
-  .week-row {
-    display: flex; gap: 8px; flex-wrap: wrap;
-    margin-bottom: 12px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--border);
-  }
-  .week-row:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-  .week-label { font-size: 11px; color: var(--subtext); text-transform: uppercase; letter-spacing: .8px; width: 100%; margin-bottom: 4px; }
-
-  .day-dot {
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    background: var(--card);
-    border: 2px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 10px; font-weight: 700;
-    cursor: pointer;
-    transition: all .2s;
-    position: relative;
-    color: var(--subtext);
-  }
-  .day-dot.rest { border-style: dashed; }
-  .day-dot.done { background: var(--accent); border-color: var(--accent); color: #0a0a0f; }
-  .day-dot.done.rest { background: var(--border); color: var(--muted); }
-  .day-dot.today { border-color: var(--accent2); color: var(--text); box-shadow: 0 0 0 3px rgba(255,92,53,.2); }
-  .day-dot:active { transform: scale(.9); }
-
-  /* TODAY WORKOUT */
-  .section-title {
-    font-family: 'Bebas Neue';
-    font-size: 20px;
-    letter-spacing: 1px;
-    color: var(--subtext);
-    text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-
-  .exercise-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    cursor: pointer;
-    transition: border-color .2s, background .2s;
-  }
-  .exercise-card.done-ex { border-color: rgba(200,255,0,.3); background: rgba(200,255,0,.04); }
-  .exercise-card:active { transform: scale(.98); }
-
-  .ex-icon { font-size: 28px; min-width: 36px; text-align: center; }
-  .ex-info { flex: 1; }
-  .ex-name { font-weight: 700; font-size: 14px; }
-  .ex-sets { font-size: 12px; color: var(--subtext); margin-top: 2px; }
-  .ex-check {
-    width: 26px; height: 26px;
-    border-radius: 50%;
-    border: 2px solid var(--border);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 14px;
-    transition: all .2s;
-    flex-shrink: 0;
-  }
-  .exercise-card.done-ex .ex-check { background: var(--accent); border-color: var(--accent); color: #0a0a0f; }
-
-  .complete-btn {
-    width: 100%;
-    padding: 16px;
-    background: var(--accent);
-    color: #0a0a0f;
-    border: none;
-    border-radius: 14px;
-    font-family: 'Bebas Neue';
-    font-size: 22px;
-    letter-spacing: 2px;
-    cursor: pointer;
-    margin-top: 16px;
-    transition: opacity .2s, transform .1s;
-  }
-  .complete-btn:active { transform: scale(.97); opacity: .85; }
-  .complete-btn:disabled { opacity: .3; cursor: not-allowed; }
-
-  .rest-day-card {
-    background: var(--card);
-    border: 1px dashed var(--border);
-    border-radius: 14px;
-    padding: 30px 20px;
-    text-align: center;
-    margin-bottom: 14px;
-  }
-  .rest-day-card .rest-icon { font-size: 48px; margin-bottom: 8px; }
-  .rest-day-card h3 { font-family: 'Bebas Neue'; font-size: 24px; color: var(--subtext); letter-spacing: 1px; }
-  .rest-day-card p { font-size: 13px; color: var(--muted); margin-top: 6px; }
-
-  /* STATS PAGE */
-  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
-  .stat-box {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px;
-    text-align: center;
-  }
-  .stat-val { font-family: 'Bebas Neue'; font-size: 36px; color: var(--accent); line-height: 1; }
-  .stat-lbl { font-size: 11px; color: var(--subtext); text-transform: uppercase; letter-spacing: .8px; margin-top: 4px; }
-
-  .week-heatmap {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 4px;
-    margin-bottom: 8px;
-  }
-  .heat-cell {
-    aspect-ratio: 1;
-    border-radius: 4px;
-    background: var(--border);
-  }
-  .heat-cell.l1 { background: #1f3a10; }
-  .heat-cell.l2 { background: #3a6b1f; }
-  .heat-cell.l3 { background: #5da030; }
-  .heat-cell.l4 { background: var(--accent); opacity: .9; }
-  .heat-labels { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; margin-bottom: 16px; }
-  .heat-lbl { font-size: 9px; color: var(--muted); text-align: center; }
-
-  /* TIPS */
-  .tip-card {
-    background: var(--card);
-    border-left: 3px solid var(--accent2);
-    border-radius: 0 12px 12px 0;
-    padding: 12px 14px;
-    margin-bottom: 10px;
-    font-size: 13px;
-    color: var(--subtext);
-    line-height: 1.5;
-  }
-  .tip-card strong { color: var(--text); display: block; margin-bottom: 4px; }
-
-  /* TOAST */
-  .toast {
-    position: fixed;
-    bottom: 90px;
-    left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    background: var(--accent);
-    color: #0a0a0f;
-    font-weight: 700;
-    padding: 10px 22px;
-    border-radius: 30px;
-    font-size: 14px;
-    opacity: 0;
-    pointer-events: none;
-    transition: all .3s;
-    z-index: 999;
-    white-space: nowrap;
-  }
-  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-
-  .bottom-nav {
-    position: fixed;
-    bottom: 0; left: 50%;
-    transform: translateX(-50%);
-    width: 100%; max-width: 430px;
-    background: rgba(10,10,15,0.97);
-    border-top: 1px solid var(--border);
-    backdrop-filter: blur(12px);
-    display: flex;
-    padding: 8px 0 max(8px, env(safe-area-inset-bottom));
-    z-index: 100;
-  }
-  .bnav-btn {
-    flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px;
-    background: none; border: none; cursor: pointer;
-    color: var(--muted); font-size: 9px; font-family: 'DM Sans', sans-serif;
-    font-weight: 700; letter-spacing: .5px; text-transform: uppercase;
-    padding: 4px 0;
-    transition: color .2s;
-  }
-  .bnav-btn .ico { font-size: 20px; }
-  .bnav-btn.active { color: var(--accent); }
-
-  .confetti-wrap {
-    position: fixed; inset: 0; pointer-events: none; z-index: 998; overflow: hidden;
-  }
-  .confetti-piece {
-    position: absolute;
-    width: 8px; height: 8px;
-    top: -10px;
-    animation: fall linear forwards;
-    border-radius: 2px;
-  }
-  @keyframes fall {
-    to { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-  }
-</style>
-</head>
-<body>
-
-<div class="header">
-  <div class="header-top">
-    <div class="logo">CALI<span>GRIND</span></div>
-    <div class="day-badge" id="dayBadge">DAY 1</div>
-  </div>
-  <div class="phase-label" id="phaseLabel">Phase 1 — Foundation</div>
-</div>
-
-<div class="nav">
-  <button class="nav-btn active" onclick="switchPage('today', this)">Today</button>
-  <button class="nav-btn" onclick="switchPage('program', this)">Program</button>
-  <button class="nav-btn" onclick="switchPage('stats', this)">Stats</button>
-  <button class="nav-btn" onclick="switchPage('tips', this)">Tips</button>
-</div>
-
-<!-- TODAY PAGE -->
-<div class="page active" id="page-today">
-  <div class="progress-wrap">
-    <div class="progress-meta">
-      <span id="progressText">Day 0 of 90</span>
-      <span id="progressPct">0%</span>
-    </div>
-    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
-  </div>
-  <div class="section-title" id="todayTitle">Today's Workout</div>
-  <div id="workoutContainer"></div>
-</div>
-
-<!-- PROGRAM PAGE -->
-<div class="page" id="page-program">
-  <div class="streak-strip">
-    <div class="streak-fire">🔥</div>
-    <div class="streak-info">
-      <div class="streak-num" id="streakNum">0</div>
-      <div class="streak-label">Day Streak</div>
-    </div>
-    <div class="best-streak">
-      <div class="best-num" id="bestNum">0</div>
-      <div class="best-label">Best</div>
-    </div>
-  </div>
-  <div id="phaseAccordion"></div>
-</div>
-
-<!-- STATS PAGE -->
-<div class="page" id="page-stats">
-  <div class="stats-grid">
-    <div class="stat-box">
-      <div class="stat-val" id="sDaysCompleted">0</div>
-      <div class="stat-lbl">Days Done</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-val" id="sStreak">0</div>
-      <div class="stat-lbl">Streak 🔥</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-val" id="sWorkouts">0</div>
-      <div class="stat-lbl">Workouts</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-val" id="sPhase">1</div>
-      <div class="stat-lbl">Phase</div>
-    </div>
-  </div>
-  <div class="section-title">Activity — 90 Days</div>
-  <div class="week-heatmap" id="heatmap"></div>
-  <div class="heat-labels">
-    <div class="heat-lbl">M</div><div class="heat-lbl">T</div><div class="heat-lbl">W</div>
-    <div class="heat-lbl">T</div><div class="heat-lbl">F</div><div class="heat-lbl">S</div>
-    <div class="heat-lbl">S</div>
-  </div>
-  <div class="section-title">Phase Progress</div>
-  <div id="phaseProgress"></div>
-</div>
-
-<!-- TIPS PAGE -->
-<div class="page" id="page-tips">
-  <div class="section-title">Pro Tips</div>
-  <div class="tip-card"><strong>📈 Progressive Overload</strong>When basic exercises feel easy, add reps or move to harder progressions — not more exercises.</div>
-  <div class="tip-card"><strong>😴 Rest = Growth</strong>Your muscles grow during recovery. Never skip rest days. Aim for 7–9 hours of sleep.</div>
-  <div class="tip-card"><strong>🥗 Fuel Right</strong>Eat enough protein (0.7–1g per lb bodyweight). You can't out-train a bad diet.</div>
-  <div class="tip-card"><strong>🔄 Form First</strong>Master the basic movement before advancing. Poor form = injury. Watch your reps in slow motion.</div>
-  <div class="tip-card"><strong>💧 Hydration</strong>Drink at least 2–3L of water daily. Dehydration kills performance and recovery.</div>
-  <div class="tip-card"><strong>📊 Track Everything</strong>Log your reps and sets each session. Progress you don't track doesn't count.</div>
-  <div class="tip-card"><strong>🧘 Warm Up</strong>5–10 min of dynamic warm-up before every session. Saves you from weeks of injury.</div>
-  <div class="tip-card"><strong>⏱️ Rest Between Sets</strong>60–90 sec for strength, 30–60 sec for endurance. Don't rush, don't slack.</div>
-  <div class="section-title" style="margin-top:20px">Exercise Progressions</div>
-  <div class="tip-card"><strong>Push-ups →</strong>Incline → Regular → Diamond → Archer → Pseudo Planche → One-arm</div>
-  <div class="tip-card"><strong>Pull-ups →</strong>Dead hang → Scapular pulls → Negatives → Assisted → Regular → L-sit → Muscle-up</div>
-  <div class="tip-card"><strong>Squats →</strong>Assisted → Regular → Pause → Jump → Pistol Squat</div>
-  <div class="tip-card"><strong>Dips →</strong>Bench dips → Foot-assist → Regular → L-sit dips → Ring dips</div>
-</div>
-
-<div class="toast" id="toast"></div>
-<div class="confetti-wrap" id="confetti"></div>
-
-<div class="bottom-nav">
-  <button class="bnav-btn active" onclick="switchPage('today', null, this)" data-page="today">
-    <span class="ico">⚡</span>Today
-  </button>
-  <button class="bnav-btn" onclick="switchPage('program', null, this)" data-page="program">
-    <span class="ico">📋</span>Program
-  </button>
-  <button class="bnav-btn" onclick="switchPage('stats', null, this)" data-page="stats">
-    <span class="ico">📊</span>Stats
-  </button>
-  <button class="bnav-btn" onclick="switchPage('tips', null, this)" data-page="tips">
-    <span class="ico">💡</span>Tips
-  </button>
-</div>
-
-<script>
-// ─── DATA ───────────────────────────────────────────────
-const PROGRAM = [
-  // PHASE 1: Foundation (Month 1, ~30 days)
-  { phase: 1, name: "Foundation", week: 1, day: 1, rest: false, exercises: [
-    { name: "Incline Push-ups", sets: "3×10", icon: "💪" },
-    { name: "Knee Push-ups", sets: "2×8", icon: "💪" },
-    { name: "Wall Squats", sets: "3×12", icon: "🦵" },
-    { name: "Dead Hang", sets: "3×20s", icon: "🙌" },
-    { name: "Plank", sets: "3×20s", icon: "🔥" }
+    { name: "Pistol Squat Assist", sets: "3×6 each", icon: "🦵" },
+    { name: "Pull-ups", sets: "3×6", icon: "🙌" },
+    { name: "Leg Raises", sets: "3×12", icon: "🔥" }
   ]},
-  { phase: 1, name: "Foundation", week: 1, day: 2, rest: true },
-  { phase: 1, name: "Foundation", week: 1, day: 3, rest: false, exercises: [
-    { name: "Regular Push-ups", sets: "3×8", icon: "💪" },
-    { name: "Bodyweight Squats", sets: "3×15", icon: "🦵" },
-    { name: "Scapular Pull-ups", sets: "3×8", icon: "🙌" },
-    { name: "Glute Bridge", sets: "3×15", icon: "🍑" },
-    { name: "Plank", sets: "3×25s", icon: "🔥" }
+  { phase: 1, name: "Foundation", week: 3, day: 20, rest: true },
+  { phase: 1, name: "Foundation", week: 3, day: 21, rest: true },
+  { phase: 1, name: "Foundation", week: 4, day: 22, rest: false, exercises: [
+    { name: "Push-ups", sets: "4×15", icon: "💪" },
+    { name: "Squats", sets: "5×20", icon: "🦵" },
+    { name: "Pull-ups", sets: "4×6", icon: "🙌" },
+    { name: "Plank", sets: "3×50s", icon: "🔥" }
   ]},
-  { phase: 1, name: "Foundation", week: 1, day: 4, rest: true },
-  { phase: 1, name: "Foundation", week: 1, day: 5, rest: false, exercises: [
-    { name: "Push-ups", sets: "3×10", icon: "💪" },
-    { name: "Lunges", sets: "3×10 each", icon: "🦵" },
-    { name: "Negative Pull-ups", sets: "3×5", icon: "🙌" },
-    { name: "Bench Dips", sets: "3×10", icon: "💪" },
-    { name: "Leg Raises", sets: "3×8", icon: "🔥" }
+  { phase: 1, name: "Foundation", week: 4, day: 23, rest: true },
+  { phase: 1, name: "Foundation", week: 4, day: 24, rest: false, exercises: [
+    { name: "Diamond Push-ups", sets: "4×10", icon: "💪" },
+    { name: "Jump Squats", sets: "4×12", icon: "🦵" },
+    { name: "Pull-ups", sets: "4×7", icon: "🙌" },
+    { name: "Dips", sets: "4×10", icon: "💪" },
+    { name: "Hollow Body Hold", sets: "3×30s", icon: "🔥" }
   ]},
-  { phase: 1, name: "Foundation", week: 1, day: 6, rest: true },
-  { phase: 1, name: "Foundation", week: 1, day: 7, rest: true },
+  { phase: 1, name: "Foundation", week: 4, day: 25, rest: true },
+  { phase: 1, name: "Foundation", week: 4, day: 26, rest: false, exercises: [
+    { name: "Pike Push-ups", sets: "4×10", icon: "💪" },
+    { name: "Lunges", sets: "4×15 each", icon: "🦵" },
+    { name: "Pull-ups", sets: "4×8", icon: "🙌" },
+    { name: "L-sit Tuck", sets: "3×20s", icon: "🔥" }
+  ]},
+  { phase: 1, name: "Foundation", week: 4, day: 27, rest: true },
+  { phase: 1, name: "Foundation", week: 4, day: 28, rest: true },
 
-  // Week 2
-  { phase: 1, name: "Foundation", week: 2, day: 8, rest: false, exercises: [
-    { name: "Push-ups", sets: "4×10", icon: "💪" },
-    { name: "Squats", sets: "4×15", icon: "🦵" },
-    { name: "Dead Hang", sets: "4×25s", icon: "🙌" },
-    { name: "Plank", sets: "3×30s", icon: "🔥" }
-  ]},
-  { phase: 1, name: "Foundation", week: 2, day: 9, rest: true },
-  { phase: 1, name: "Foundation", week: 2, day: 10, rest: false, exercises: [
-    { name: "Diamond Push-ups", sets: "3×6", icon: "💪" },
-    { name: "Jump Squats", sets: "3×10", icon: "🦵" },
-    { name: "Assisted Pull-ups", sets: "3×6", icon: "🙌" },
-    { name: "Bench Dips", sets: "3×12", icon: "💪" },
-    { name: "Hollow Body Hold", sets: "3×20s", icon: "🔥" }
-  ]},
-  { phase: 1, name: "Foundation", week: 2, day: 11, rest: true },
-  { phase: 1, name: "Foundation", week: 2, day: 12, rest: false, exercises: [
-    { name: "Push-ups", sets: "3×12", icon: "💪" },
-    { name: "Lunges", sets: "3×12 each", icon: "🦵" },
-    { name: "Negative Pull-ups", sets: "3×6", icon: "🙌" },
-    { name: "Pike Push-ups", sets: "3×8", icon: "💪" },
-    { name: "Leg Raises", sets: "3×10", icon: "🔥" }
-  ]},
-  { phase: 1, name: "Foundation", week: 2, day: 13, rest: true },
-  { phase: 1, name: "Foundation", week: 2, day: 14, rest: true },
+  // Deload
+  { phase: 1, name: "Foundation", week: 4, day: 29, rest: true },
+  { phase: 1, name: "Foundation", week: 4, day: 30, rest: true },
 
-  // Weeks 3–4
-  { phase: 1, name: "Foundation", week: 3, day: 15, rest: false, exercises: [
-    { name: "Push-ups", sets: "4×12", icon: "💪" },
-    { name: "Squats", sets: "4×20", icon: "🦵" },
-    { name: "Pull-ups", sets: "3×4", icon: "🙌" },
-    { name: "Plank", sets: "3×40s", icon: "🔥" }
-  ]},
-  { phase: 1, name: "Foundation", week: 3, day: 16, rest: true },
-  { phase: 1, name: "Foundation", week: 3, day: 17, rest: false, exercises: [
-    { name: "Pike Push-ups", sets: "3×8", icon: "💪" },
-    { name: "Bulgarian Split Squat", sets: "3×8 each", icon: "🦵" },
-    { name: "Pull-ups", sets: "3×5", icon: "🙌" },
-    { name: "Dips", sets: "3×8", icon: "💪" },
-    { name: "L-sit Tuck", sets: "3×15s", icon: "🔥" }
-  ]},
-  { phase: 1, name: "Foundation", week: 3, day: 18, rest: true },
-  { phase: 1, name: "Foundation", week: 3, day: 19, rest: false, exercises: [
-    { name: "Archer Push-ups", sets: "3×6 each", icon: "💪" },
-    { nam
+  // PHASE 2: Strength (Month 2, days 31–60)
+  ...Array.from({length: 30}, (_, i) => {
+    const d = i + 31;
+    const localDay = i + 1;
+    const week = Math.ceil(localDay / 7);
+    const weekDay = ((localDay - 1) % 7) + 1;
+    const isRest = weekDay === 2 || weekDay === 4 || weekDay === 6 || weekDay === 7;
+    if (isRest) return { phase: 2, name: "Strength", week, day: d, rest: true };
+    const sets = [
+      [{ name:"Pull-ups", sets:"4×8", icon:"🙌"},{name:"Dips", sets:"4×10", icon:"💪"},{name:"Squats", sets:"4×20", icon:"🦵"},{name:"Plank", sets:"4×45s", icon:"🔥"}],
+      [{ name:"Archer Push-ups", sets:"4×8 each", icon:"💪"},{name:"Pull-ups", sets:"4×9", icon:"🙌"},{name:"Pistol Squat Assist", sets:"4×8", icon:"🦵"},{name:"L-sit Tuck", sets:"3×25s", icon:"🔥"}],
+      [{ name:"Pike Push-ups", sets:"4×12", icon:"💪"},{name:"Pull-ups", sets:"5×8", icon:"🙌"},{name:"Jump Squats", sets:"4×15", icon:"🦵"},{name:"Leg Raises", sets:"4×15", icon:"🔥"}],
+    ];
+    const setIdx = [1,3,5].indexOf(weekDay);
+    const exList = sets[setIdx] || sets[0];
+    return { phase: 2, name: "Strength", week, day: d, rest: false, exercises: exList };
+  }),
+
+  // PHASE 3: Skill (Month 3, days 61–90)
+  ...Array.from({length: 30}, (_, i) => {
+    const d = i + 61;
+    const localDay = i + 1;
+    const week = Math.ceil(localDay / 7);
+    const weekDay = ((localDay - 1) % 7) + 1;
+    const isRest = weekDay === 2 || weekDay === 4 || weekDay === 6 || weekDay === 7;
+    if (isRest) return { phase: 3, name: "Skill", week, day: d, rest: true };
+    const sets = [
+      [{ name:"Pseudo Planche Push-ups", sets:"4×8", icon:"💪"},{name:"Muscle-up Attempts", sets:"4×3", icon:"🙌"},{name:"Pistol Squats", sets:"4×6 each", icon:"🦵"},{name:"Hollow Body Rock", sets:"4×30s", icon:"🔥"}],
+      [{ name:"One-arm Push-up Neg.", sets:"3×5 each", icon:"💪"},{name:"L-sit", sets:"4×20s", icon:"🙌"},{name:"Bulgarian Split Squat", sets:"4×12 each", icon:"🦵"},{name:"Front Lever Tuck", sets:"3×10s", icon:"🔥"}],
+      [{ name:"Handstand Practice", sets:"5×30s", icon:"🤸"},{name:"Pull-ups", sets:"5×10", icon:"🙌"},{name:"Pistol Squats", sets:"4×8 each", icon:"🦵"},{name:"Leg Raises", sets:"4×20", icon:"🔥"}],
+    ];
+    const setIdx = [1,3,5].indexOf(weekDay);
+    const exList = sets[setIdx] || sets[0];
+    return { phase: 3, name: "Skill", week, day: d, rest: false, exercises: exList };
+  }),
+];
+
+// ─── STATE ──────────────────────────────────────────────
+let state = JSON.parse(localStorage.getItem('caligrind') || 'null') || {
+  startDay: null,
+  completedDays: [],
+  currentDay: 1,
+  exerciseDone: [],
+};
+
+function saveState() {
+  localStorage.setItem('caligrind', JSON.stringify(state));
+}
+
+function getCurrentDayIndex() {
+  return Math.max(0, Math.min(state.currentDay - 1, PROGRAM.length - 1));
+}
+
+function getTodayData() {
+  return PROGRAM[getCurrentDayIndex()];
+}
+
+// ─── NAVIGATION ─────────────────────────────────────────
+let activeNavBtn = document.querySelector('.nav-btn.active');
+let activeBNavBtn = document.querySelector('.bnav-btn.active');
+
+function switchPage(page, topBtn, botBtn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+
+  if (topBtn) {
+    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+    topBtn.classList.add('active');
+  }
+  if (botBtn) {
+    document.querySelectorAll('.bnav-btn').forEach(b => b.classList.remove('active'));
+    botBtn.classList.add('active');
+    // Sync top nav
+    const navBtns = document.querySelectorAll('.nav-btn');
+    const pages = ['today','program','stats','tips'];
+    navBtns[pages.indexOf(page)].classList.add('active');
+  }
+  if (!topBtn && !botBtn) return;
+
+  if (page === 'stats') renderStats();
+  if (page === 'program') renderProgram();
+}
+
+// ─── TODAY RENDER ────────────────────────────────────────
+function renderToday() {
+  const idx = getCurrentDayIndex();
+  const data = PROGRAM[idx];
+  const totalDone = state.completedDays.filter(d => !PROGRAM[d]?.rest).length;
+  const pct = Math.round((state.currentDay - 1) / 90 * 100);
+
+  document.getElementById('dayBadge').textContent = `DAY ${data.day}`;
+  document.getElementById('phaseLabel').textContent = `Phase ${data.phase} — ${data.name}`;
+  document.getElementById('progressText').textContent = `Day ${data.day} of 90`;
+  document.getElementById('progressPct').textContent = pct + '%';
+  document.getElementById('progressFill').style.width = pct + '%';
+
+  const container = document.getElementById('workoutContainer');
+
+  if (state.completedDays.includes(idx)) {
+    // Day already done
+    const nextDay = idx + 1;
+    container.innerHTML = `
+      <div class="rest-day-card" style="border-color: rgba(200,255,0,.3);">
+        <div class="rest-icon">✅</div>
+        <h3 style="color: var(--accent)">Day Complete!</h3>
+        <p style="margin-top:8px">Great work. Come back tomorrow for Day ${nextDay + 1}.</p>
+      </div>
+      <button class="complete-btn" style="background: #333; color: var(--subtext); font-size:16px;" onclick="advanceDay()">Next Day →</button>
+    `;
+    return;
+  }
+
+  if (data.rest) {
+    container.innerHTML = `
+      <div class="rest-day-card">
+        <div class="rest-icon">😴</div>
+        <h3>Rest Day</h3>
+        <p>Recovery is part of training. Stretch, hydrate, and sleep well.</p>
+      </div>
+      <button class="complete-btn" onclick="completeRestDay()">Mark Rest Done</button>
+    `;
+  } else {
+    let html = '';
+    data.exercises.forEach((ex, i) => {
+      const done = state.exerciseDone.includes(i);
+      html += `<div class="exercise-card ${done ? 'done-ex' : ''}" onclick="toggleExercise(${i})">
+        <div class="ex-icon">${ex.icon}</div>
+        <div class="ex-info">
+          <div class="ex-name">${ex.name}</div>
+          <div class="ex-sets">${ex.sets}</div>
+        </div>
+        <div class="ex-check">${done ? '✓' : ''}</div>
+      </div>`;
+    });
+    const allDone = state.exerciseDone.length === data.exercises.length;
+    html += `<button class="complete-btn" ${allDone ? '' : 'disabled'} id="completeBtn" onclick="completeWorkout()">LOG WORKOUT 💪</button>`;
+    container.innerHTML = html;
+  }
+}
+
+function toggleExercise(i) {
+  const idx = state.exerciseDone.indexOf(i);
+  if (idx > -1) state.exerciseDone.splice(idx, 1);
+  else state.exerciseDone.push(i);
+  saveState();
+  renderToday();
+}
+
+function completeWorkout() {
+  const dayIdx = getCurrentDayIndex();
+  if (!state.completedDays.includes(dayIdx)) state.completedDays.push(dayIdx);
+  state.exerciseDone = [];
+  saveState();
+  fireConfetti();
+  showToast('Workout logged! 🔥');
+  renderToday();
+  renderStats();
+}
+
+function completeRestDay() {
+  const dayIdx = getCurrentDayIndex();
+  if (!state.completedDays.includes(dayIdx)) state.completedDays.push(dayIdx);
+  saveState();
+  showToast('Rest day marked ✓');
+  renderToday();
+}
+
+function advanceDay() {
+  if (state.currentDay < 90) {
+    state.currentDay++;
+    state.exerciseDone = [];
+    saveState();
+    renderToday();
+  }
+}
+
+// ─── PROGRAM RENDER ──────────────────────────────────────
+function renderProgram() {
+  // Streak calc
+  let streak = 0, best = 0, cur = 0;
+  for (let i = 0; i < state.currentDay - 1; i++) {
+    if (state.completedDays.includes(i)) { cur++; best = Math.max(best, cur); }
+    else cur = 0;
+  }
+  streak = cur;
+  document.getElementById('streakNum').textContent = streak;
+  document.getElementById('bestNum').textContent = best;
+
+  const phases = [1, 2, 3];
+  const phaseNames = ['Foundation', 'Strength', 'Skill'];
+  const phaseWeeks = ['Weeks 1–4', 'Weeks 5–8', 'Weeks 9–12'];
+  let html = '';
+
+  phases.forEach((ph, pi) => {
+    const phDays = PROGRAM.filter(d => d.phase === ph);
+    const phDayIndices = phDays.map(d => PROGRAM.indexOf(d));
+    const allDone = phDayIndices.every(i => state.completedDays.includes(i));
+    const isCurrent = phDays.some(d => PROGRAM.indexOf(d) === getCurrentDayIndex());
+    const cls = allDone ? 'done' : isCurrent ? 'current' : 'unlocked';
+    const badge = allDone ? '<span class="phase-badge badge-done">✓ Done</span>'
+      : isCurrent ? '<span class="phase-badge badge-current">● Active</span>'
+      : '<span class="phase-badge badge-locked">Upcoming</span>';
+
+    // Group by week
+    const weeks = {};
+    phDays.forEach(d => { if (!weeks[d.week]) weeks[d.week] = []; weeks[d.week].push(d); });
+
+    let weekHtml = '';
+    Object.entries(weeks).forEach(([wk, days]) => {
+      weekHtml += `<div class="week-row"><div class="week-label">Week ${wk}</div>`;
+      days.forEach(d => {
+        const dIdx = PROGRAM.indexOf(d);
+        const isDone = state.completedDays.includes(dIdx);
+        const isToday = dIdx === getCurrentDayIndex();
+        weekHtml += `<div class="day-dot ${d.rest ? 'rest' : ''} ${isDone ? 'done' : ''} ${isToday ? 'today' : ''}"
+          title="${d.rest ? 'Rest' : 'Training'}">${isDone ? '✓' : isToday ? '▶' : d.rest ? '—' : d.day}</div>`;
+      });
+      weekHtml += '</div>';
+    });
+
+    html += `
+      <div class="phase-card ${cls}" onclick="togglePhase(${pi})">
+        <div class="phase-header">
+          <div class="phase-num">0${ph}</div>
+          <div class="phase-info">
+            <div class="phase-name">${phaseNames[pi]}</div>
+            <div class="phase-weeks">${phaseWeeks[pi]}</div>
+          </div>
+          ${badge}
+        </div>
+        <div class="phase-body" id="phase-body-${pi}">${weekHtml}</div>
+      </div>`;
+  });
+  document.getElementById('phaseAccordion').innerHTML = html;
+
+  // Auto-open current phase
+  const curPhase = getTodayData()?.phase || 1;
+  const body = document.getElementById(`phase-body-${curPhase - 1}`);
+  if (body) body.classList.add('open');
+}
+
+function togglePhase(i) {
+  const body = document.getElementById(`phase-body-${i}`);
+  body.classList.toggle('open');
+}
+
+// ─── STATS RENDER ────────────────────────────────────────
+function renderStats() {
+  const workouts = state.completedDays.filter(i => !PROGRAM[i]?.rest).length;
+  const days = state.completedDays.length;
+  let streak = 0;
+  for (let i = state.currentDay - 2; i >= 0; i--) {
+    if (state.completedDays.includes(i)) streak++;
+    else break;
+  }
+  const phase = getTodayData()?.phase || 1;
+
+  document.getElementById('sDaysCompleted').textContent = days;
+  document.getElementById('sStreak').textContent = streak;
+  document.getElementById('sWorkouts').textContent = workouts;
+  document.getElementById('sPhase').textContent = phase;
+
+  // Heatmap (90 cells)
+  let heatHtml = '';
+  for (let i = 0; i < 90; i++) {
+    const done = state.completedDays.includes(i);
+    const isRest = PROGRAM[i]?.rest;
+    const cls = !done ? '' : isRest ? 'l1' : 'l4';
+    heatHtml += `<div class="heat-cell ${cls}"></div>`;
+  }
+  document.getElementById('heatmap').innerHTML = heatHtml;
+
+  // Phase progress bars
+  let ppHtml = '';
+  [1, 2, 3].forEach((ph, pi) => {
+    const phDays = PROGRAM.filter(d => d.phase === ph && !d.rest);
+    const phIndices = phDays.map(d => PROGRAM.indexOf(d));
+    const done = phIndices.filter(i => state.completedDays.includes(i)).length;
+    const pct = Math.round(done / phIndices.length * 100);
+    const names = ['Foundation', 'Strength', 'Skill'];
+    ppHtml += `
+      <div style="margin-bottom:14px">
+        <div class="progress-meta"><span>${names[pi]}</span><span>${done}/${phIndices.length} sessions</span></div>
+        <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
+      </div>`;
+  });
+  document.getElementById('phaseProgress').innerHTML = ppHtml;
+}
+
+// ─── UTILS ───────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+function fireConfetti() {
+  const wrap = document.getElementById('confetti');
+  wrap.innerHTML = '';
+  const colors = ['#c8ff00', '#ff5c35', '#ffffff', '#ffdd00', '#40e0d0'];
+  for (let i = 0; i < 40; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    el.style.cssText = `
+      left: ${Math.random() * 100}%;
+      background: ${colors[Math.floor(Math.random() * colors.length)]};
+      animation-duration: ${1.2 + Math.random() * 1.2}s;
+      animation-delay: ${Math.random() * .4}s;
+      transform: rotate(${Math.random() * 360}deg);
+      width: ${6 + Math.random() * 6}px;
+      height: ${6 + Math.random() * 6}px;
+    `;
+    wrap.appendChild(el);
+  }
+  setTimeout(() => wrap.innerHTML = '', 2500);
+}
+
+// ─── INIT ────────────────────────────────────────────────
+renderToday();
+renderProgram();
+</script>
+</body>
+</html>
